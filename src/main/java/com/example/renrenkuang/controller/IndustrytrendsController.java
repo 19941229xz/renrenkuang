@@ -14,7 +14,6 @@ import javax.validation.Valid;
 @Api(value = "industrytrends模块接口",description = "这是一个行业动态模块的接口文档")
 @RestController
 @Slf4j
-@CrossOrigin
 public class IndustrytrendsController {
 
 	@Autowired

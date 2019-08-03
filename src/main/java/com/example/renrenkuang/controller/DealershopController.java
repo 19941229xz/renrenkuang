@@ -14,7 +14,6 @@ import javax.validation.Valid;
 @Api(value = "dealershop模块接口",description = "这是一个自营商城模块的接口文档")
 @RestController
 @Slf4j
-@CrossOrigin
 public class DealershopController {
 
 	@Autowired

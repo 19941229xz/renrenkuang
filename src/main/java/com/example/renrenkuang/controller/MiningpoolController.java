@@ -14,7 +14,6 @@ import javax.validation.Valid;
 @Api(value = "miningpool模块接口",description = "这是一个矿池模块的接口文档")
 @RestController
 @Slf4j
-@CrossOrigin
 public class MiningpoolController {
 
 	@Autowired

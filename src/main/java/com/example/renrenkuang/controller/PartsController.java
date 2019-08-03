@@ -14,7 +14,6 @@ import javax.validation.Valid;
 @Api(value = "parts模块接口",description = "这是一个配件表模块的接口文档")
 @RestController
 @Slf4j
-@CrossOrigin
 public class PartsController {
 
 	@Autowired
