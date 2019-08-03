@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.renrenkuang.dao.PartsDao">
+	<!-- 动态条件查询parts -->
+	<select id="getAllParts" parameterType="Parts" resultType="Parts">SELECT * FROM parts
+		<where> 
+			<!-- 配件主键id -->  
+			<if test=" id !=null and id !='' ">and id=#{id}</if>  
+			<!-- 配件类型 -->  
+			<if test=" partsType !=null and partsType !='' ">and partsType=#{partsType}</if>  
+			<!-- 配件名称 -->  
+			<if test=" partsName !=null and partsName !='' ">and partsName=#{partsName}</if>  
+			<!-- 是否二手 1 是二手 2 不是二手 -->  
+			<if test=" isSecondHand !=null and isSecondHand !='' ">and isSecondHand=#{isSecondHand}</if>  
+			<!-- 配件描述 -->  
+			<if test=" description !=null and description !='' ">and description=#{description}</if>  
+			<!-- 配件价格 -->  
+			<if test=" price !=null and price !='' ">and price=#{price}</if>  
+			<!-- 配件外观1 -->  
+			<if test=" externalView1 !=null and externalView1 !='' ">and externalView1=#{externalView1}</if>  
+			<!-- 配件外观2 -->  
+			<if test=" externalView2 !=null and externalView2 !='' ">and externalView2=#{externalView2}</if>  
+			<!-- 配件外观3 -->  
+			<if test=" externalView3 !=null and externalView3 !='' ">and externalView3=#{externalView3}</if>  
+			<!-- 性能图1 -->  
+			<if test=" performanceImg1 !=null and performanceImg1 !='' ">and performanceImg1=#{performanceImg1}</if>  
+			<!-- 性能图2 -->  
+			<if test=" performanceImg2 !=null and performanceImg2 !='' ">and performanceImg2=#{performanceImg2}</if>  
+			<!-- 性能图3 -->  
+			<if test=" performanceImg3 !=null and performanceImg3 !='' ">and performanceImg3=#{performanceImg3}</if>  
+			<!-- 是否在保质期 1是 2 不是 -->  
+			<if test=" isWarrantyPeriod !=null and isWarrantyPeriod !='' ">and isWarrantyPeriod=#{isWarrantyPeriod}</if>  
+			<!-- 出厂日期 -->  
+			<if test=" manufactureDate !=null and manufactureDate !='' ">and manufactureDate=#{manufactureDate}</if>  
+			<!-- 不在质保期是否提供店保 1 是 2 不是 -->  
+			<if test=" isShopIsProtected !=null and isShopIsProtected !='' ">and isShopIsProtected=#{isShopIsProtected}</if> 
+		</where> 
+	</select>
+	<!-- 动态保存parts -->
+	<insert parameterType="Parts" id="addParts">INSERT INTO parts
+		<trim prefix="(" suffix=")" suffixOverrides=","> 
+			<!-- 配件主键id -->  
+			<if test=" id !=null and id !='' ">id,</if>  
+			<!-- 配件类型 -->  
+			<if test=" partsType !=null and partsType !='' ">partsType,</if>  
+			<!-- 配件名称 -->  
+			<if test=" partsName !=null and partsName !='' ">partsName,</if>  
+			<!-- 是否二手 1 是二手 2 不是二手 -->  
+			<if test=" isSecondHand !=null and isSecondHand !='' ">isSecondHand,</if>  
+			<!-- 配件描述 -->  
+			<if test=" description !=null and description !='' ">description,</if>  
+			<!-- 配件价格 -->  
+			<if test=" price !=null and price !='' ">price,</if>  
+			<!-- 配件外观1 -->  
+			<if test=" externalView1 !=null and externalView1 !='' ">externalView1,</if>  
+			<!-- 配件外观2 -->  
+			<if test=" externalView2 !=null and externalView2 !='' ">externalView2,</if>  
+			<!-- 配件外观3 -->  
+			<if test=" externalView3 !=null and externalView3 !='' ">externalView3,</if>  
+			<!-- 性能图1 -->  
+			<if test=" performanceImg1 !=null and performanceImg1 !='' ">performanceImg1,</if>  
+			<!-- 性能图2 -->  
+			<if test=" performanceImg2 !=null and performanceImg2 !='' ">performanceImg2,</if>  
+			<!-- 性能图3 -->  
+			<if test=" performanceImg3 !=null and performanceImg3 !='' ">performanceImg3,</if>  
+			<!-- 是否在保质期 1是 2 不是 -->  
+			<if test=" isWarrantyPeriod !=null and isWarrantyPeriod !='' ">isWarrantyPeriod,</if>  
+			<!-- 出厂日期 -->  
+			<if test=" manufactureDate !=null and manufactureDate !='' ">manufactureDate,</if>  
+			<!-- 不在质保期是否提供店保 1 是 2 不是 -->  
+			<if test=" isShopIsProtected !=null and isShopIsProtected !='' ">isShopIsProtected,</if> 
+		</trim>  
+		<trim prefix="values(" suffix=")" suffixOverrides=","> 
+			<!-- 配件主键id -->  
+			<if test=" id !=null and id !='' ">#{id},</if>  
+			<!-- 配件类型 -->  
+			<if test=" partsType !=null and partsType !='' ">#{partsType},</if>  
+			<!-- 配件名称 -->  
+			<if test=" partsName !=null and partsName !='' ">#{partsName},</if>  
+			<!-- 是否二手 1 是二手 2 不是二手 -->  
+			<if test=" isSecondHand !=null and isSecondHand !='' ">#{isSecondHand},</if>  
+			<!-- 配件描述 -->  
+			<if test=" description !=null and description !='' ">#{description},</if>  
+			<!-- 配件价格 -->  
+			<if test=" price !=null and price !='' ">#{price},</if>  
+			<!-- 配件外观1 -->  
+			<if test=" externalView1 !=null and externalView1 !='' ">#{externalView1},</if>  
+			<!-- 配件外观2 -->  
+			<if test=" externalView2 !=null and externalView2 !='' ">#{externalView2},</if>  
+			<!-- 配件外观3 -->  
+			<if test=" externalView3 !=null and externalView3 !='' ">#{externalView3},</if>  
+			<!-- 性能图1 -->  
+			<if test=" performanceImg1 !=null and performanceImg1 !='' ">#{performanceImg1},</if>  
+			<!-- 性能图2 -->  
+			<if test=" performanceImg2 !=null and performanceImg2 !='' ">#{performanceImg2},</if>  
+			<!-- 性能图3 -->  
+			<if test=" performanceImg3 !=null and performanceImg3 !='' ">#{performanceImg3},</if>  
+			<!-- 是否在保质期 1是 2 不是 -->  
+			<if test=" isWarrantyPeriod !=null and isWarrantyPeriod !='' ">#{isWarrantyPeriod},</if>  
+			<!-- 出厂日期 -->  
+			<if test=" manufactureDate !=null and manufactureDate !='' ">#{manufactureDate},</if>  
+			<!-- 不在质保期是否提供店保 1 是 2 不是 -->  
+			<if test=" isShopIsProtected !=null and isShopIsProtected !='' ">#{isShopIsProtected},</if> 
+		</trim>  
+		<selectKey resultType="int" keyProperty="id" order="AFTER">select LAST_INSERT_ID()</selectKey> 
+	</insert>
+	<!-- 动态更新parts -->
+	<update id="updateParts" parameterType="Parts">update parts set 
+		<trim suffixOverrides=","> 
+			<!-- 配件主键id -->  
+			<if test=" id !=null and id !='' ">id=#{id},</if>  
+			<!-- 配件类型 -->  
+			<if test=" partsType !=null and partsType !='' ">partsType=#{partsType},</if>  
+			<!-- 配件名称 -->  
+			<if test=" partsName !=null and partsName !='' ">partsName=#{partsName},</if>  
+			<!-- 是否二手 1 是二手 2 不是二手 -->  
+			<if test=" isSecondHand !=null and isSecondHand !='' ">isSecondHand=#{isSecondHand},</if>  
+			<!-- 配件描述 -->  
+			<if test=" description !=null and description !='' ">description=#{description},</if>  
+			<!-- 配件价格 -->  
+			<if test=" price !=null and price !='' ">price=#{price},</if>  
+			<!-- 配件外观1 -->  
+			<if test=" externalView1 !=null and externalView1 !='' ">externalView1=#{externalView1},</if>  
+			<!-- 配件外观2 -->  
+			<if test=" externalView2 !=null and externalView2 !='' ">externalView2=#{externalView2},</if>  
+			<!-- 配件外观3 -->  
+			<if test=" externalView3 !=null and externalView3 !='' ">externalView3=#{externalView3},</if>  
+			<!-- 性能图1 -->  
+			<if test=" performanceImg1 !=null and performanceImg1 !='' ">performanceImg1=#{performanceImg1},</if>  
+			<!-- 性能图2 -->  
+			<if test=" performanceImg2 !=null and performanceImg2 !='' ">performanceImg2=#{performanceImg2},</if>  
+			<!-- 性能图3 -->  
+			<if test=" performanceImg3 !=null and performanceImg3 !='' ">performanceImg3=#{performanceImg3},</if>  
+			<!-- 是否在保质期 1是 2 不是 -->  
+			<if test=" isWarrantyPeriod !=null and isWarrantyPeriod !='' ">isWarrantyPeriod=#{isWarrantyPeriod},</if>  
+			<!-- 出厂日期 -->  
+			<if test=" manufactureDate !=null and manufactureDate !='' ">manufactureDate=#{manufactureDate},</if>  
+			<!-- 不在质保期是否提供店保 1 是 2 不是 -->  
+			<if test=" isShopIsProtected !=null and isShopIsProtected !='' ">isShopIsProtected=#{isShopIsProtected},</if> 
+		</trim> WHERE id = #{id}
+	</update>
+</mapper>

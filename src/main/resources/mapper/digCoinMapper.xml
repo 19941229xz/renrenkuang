@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.renrenkuang.dao.DigCoinDao">
+	<!-- 动态条件查询digCoin -->
+	<select id="getAllDigCoin" parameterType="DigCoin" resultType="DigCoin">SELECT * FROM digCoin
+		<where> 
+			<!-- 主键id -->  
+			<if test=" id !=null and id !='' ">and id=#{id}</if>  
+			<!-- 矿机id （关联矿机表） -->  
+			<if test=" millId !=null and millId !='' ">and millId=#{millId}</if>  
+			<!--  币种id（关联币种表） -->  
+			<if test=" coinId !=null and coinId !='' ">and coinId=#{coinId}</if> 
+		</where> 
+	</select>
+	<!-- 动态保存digCoin -->
+	<insert parameterType="DigCoin" id="addDigCoin">INSERT INTO digCoin
+		<trim prefix="(" suffix=")" suffixOverrides=","> 
+			<!-- 主键id -->  
+			<if test=" id !=null and id !='' ">id,</if>  
+			<!-- 矿机id （关联矿机表） -->  
+			<if test=" millId !=null and millId !='' ">millId,</if>  
+			<!--  币种id（关联币种表） -->  
+			<if test=" coinId !=null and coinId !='' ">coinId,</if> 
+		</trim>  
+		<trim prefix="values(" suffix=")" suffixOverrides=","> 
+			<!-- 主键id -->  
+			<if test=" id !=null and id !='' ">#{id},</if>  
+			<!-- 矿机id （关联矿机表） -->  
+			<if test=" millId !=null and millId !='' ">#{millId},</if>  
+			<!--  币种id（关联币种表） -->  
+			<if test=" coinId !=null and coinId !='' ">#{coinId},</if> 
+		</trim>  
+		<selectKey resultType="int" keyProperty="id" order="AFTER">select LAST_INSERT_ID()</selectKey> 
+	</insert>
+	<!-- 动态更新digCoin -->
+	<update id="updateDigCoin" parameterType="DigCoin">update digCoin set 
+		<trim suffixOverrides=","> 
+			<!-- 主键id -->  
+			<if test=" id !=null and id !='' ">id=#{id},</if>  
+			<!-- 矿机id （关联矿机表） -->  
+			<if test=" millId !=null and millId !='' ">millId=#{millId},</if>  
+			<!--  币种id（关联币种表） -->  
+			<if test=" coinId !=null and coinId !='' ">coinId=#{coinId},</if> 
+		</trim> WHERE id = #{id}
+	</update>
+</mapper>

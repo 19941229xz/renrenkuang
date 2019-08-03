@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.renrenkuang.dao.MillDao">
+	<!-- 动态条件查询mill -->
+	<select id="getAllMill" parameterType="Mill" resultType="Mill">SELECT * FROM mill
+		<where> 
+			<!-- 主键id -->  
+			<if test=" id !=null and id !='' ">and id=#{id}</if>  
+			<!-- 品牌id（关联品牌表） -->  
+			<if test=" brand !=null and brand !='' ">and brand=#{brand}</if>  
+			<!-- 型号id(关联型号表) -->  
+			<if test=" model !=null and model !='' ">and model=#{model}</if>  
+			<!-- 电源详情（关联电源表） -->  
+			<if test=" powerContent !=null and powerContent !='' ">and powerContent=#{powerContent}</if>  
+			<!-- 订单号(选填) -->  
+			<if test=" orderId !=null and orderId !='' ">and orderId=#{orderId}</if>  
+			<!-- 价格 -->  
+			<if test=" price !=null and price !='' ">and price=#{price}</if>  
+			<!-- 币种id -->  
+			<if test=" bitType !=null and bitType !='' ">and bitType=#{bitType}</if>  
+			<!-- 是否有显卡（1有 2没有） -->  
+			<if test=" hasGPU !=null and hasGPU !='' ">and hasGPU=#{hasGPU}</if>  
+			<!-- 生产日期 -->  
+			<if test=" manufactureDate !=null and manufactureDate !='' ">and manufactureDate=#{manufactureDate}</if>  
+			<!-- 数量 -->  
+			<if test=" num !=null and num !='' ">and num=#{num}</if>  
+			<!-- 是否二手（1二手 2新货） -->  
+			<if test=" isUsed !=null and isUsed !='' ">and isUsed=#{isUsed}</if> 
+		</where> 
+	</select>
+	<!-- 动态保存mill -->
+	<insert parameterType="Mill" id="addMill">INSERT INTO mill
+		<trim prefix="(" suffix=")" suffixOverrides=","> 
+			<!-- 主键id -->  
+			<if test=" id !=null and id !='' ">id,</if>  
+			<!-- 品牌id（关联品牌表） -->  
+			<if test=" brand !=null and brand !='' ">brand,</if>  
+			<!-- 型号id(关联型号表) -->  
+			<if test=" model !=null and model !='' ">model,</if>  
+			<!-- 电源详情（关联电源表） -->  
+			<if test=" powerContent !=null and powerContent !='' ">powerContent,</if>  
+			<!-- 订单号(选填) -->  
+			<if test=" orderId !=null and orderId !='' ">orderId,</if>  
+			<!-- 价格 -->  
+			<if test=" price !=null and price !='' ">price,</if>  
+			<!-- 币种id -->  
+			<if test=" bitType !=null and bitType !='' ">bitType,</if>  
+			<!-- 是否有显卡（1有 2没有） -->  
+			<if test=" hasGPU !=null and hasGPU !='' ">hasGPU,</if>  
+			<!-- 生产日期 -->  
+			<if test=" manufactureDate !=null and manufactureDate !='' ">manufactureDate,</if>  
+			<!-- 数量 -->  
+			<if test=" num !=null and num !='' ">num,</if>  
+			<!-- 是否二手（1二手 2新货） -->  
+			<if test=" isUsed !=null and isUsed !='' ">isUsed,</if> 
+		</trim>  
+		<trim prefix="values(" suffix=")" suffixOverrides=","> 
+			<!-- 主键id -->  
+			<if test=" id !=null and id !='' ">#{id},</if>  
+			<!-- 品牌id（关联品牌表） -->  
+			<if test=" brand !=null and brand !='' ">#{brand},</if>  
+			<!-- 型号id(关联型号表) -->  
+			<if test=" model !=null and model !='' ">#{model},</if>  
+			<!-- 电源详情（关联电源表） -->  
+			<if test=" powerContent !=null and powerContent !='' ">#{powerContent},</if>  
+			<!-- 订单号(选填) -->  
+			<if test=" orderId !=null and orderId !='' ">#{orderId},</if>  
+			<!-- 价格 -->  
+			<if test=" price !=null and price !='' ">#{price},</if>  
+			<!-- 币种id -->  
+			<if test=" bitType !=null and bitType !='' ">#{bitType},</if>  
+			<!-- 是否有显卡（1有 2没有） -->  
+			<if test=" hasGPU !=null and hasGPU !='' ">#{hasGPU},</if>  
+			<!-- 生产日期 -->  
+			<if test=" manufactureDate !=null and manufactureDate !='' ">#{manufactureDate},</if>  
+			<!-- 数量 -->  
+			<if test=" num !=null and num !='' ">#{num},</if>  
+			<!-- 是否二手（1二手 2新货） -->  
+			<if test=" isUsed !=null and isUsed !='' ">#{isUsed},</if> 
+		</trim>  
+		<selectKey resultType="int" keyProperty="id" order="AFTER">select LAST_INSERT_ID()</selectKey> 
+	</insert>
+	<!-- 动态更新mill -->
+	<update id="updateMill" parameterType="Mill">update mill set 
+		<trim suffixOverrides=","> 
+			<!-- 主键id -->  
+			<if test=" id !=null and id !='' ">id=#{id},</if>  
+			<!-- 品牌id（关联品牌表） -->  
+			<if test=" brand !=null and brand !='' ">brand=#{brand},</if>  
+			<!-- 型号id(关联型号表) -->  
+			<if test=" model !=null and model !='' ">model=#{model},</if>  
+			<!-- 电源详情（关联电源表） -->  
+			<if test=" powerContent !=null and powerContent !='' ">powerContent=#{powerContent},</if>  
+			<!-- 订单号(选填) -->  
+			<if test=" orderId !=null and orderId !='' ">orderId=#{orderId},</if>  
+			<!-- 价格 -->  
+			<if test=" price !=null and price !='' ">price=#{price},</if>  
+			<!-- 币种id -->  
+			<if test=" bitType !=null and bitType !='' ">bitType=#{bitType},</if>  
+			<!-- 是否有显卡（1有 2没有） -->  
+			<if test=" hasGPU !=null and hasGPU !='' ">hasGPU=#{hasGPU},</if>  
+			<!-- 生产日期 -->  
+			<if test=" manufactureDate !=null and manufactureDate !='' ">manufactureDate=#{manufactureDate},</if>  
+			<!-- 数量 -->  
+			<if test=" num !=null and num !='' ">num=#{num},</if>  
+			<!-- 是否二手（1二手 2新货） -->  
+			<if test=" isUsed !=null and isUsed !='' ">isUsed=#{isUsed},</if> 
+		</trim> WHERE id = #{id}
+	</update>
+</mapper>

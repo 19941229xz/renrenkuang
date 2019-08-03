@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.renrenkuang.dao.DealershopDao">
+	<!-- 动态条件查询dealershop -->
+	<select id="getAllDealershop" parameterType="Dealershop" resultType="Dealershop">SELECT * FROM dealershop
+		<where> 
+			<!-- 主键id -->  
+			<if test=" id !=null and id !='' ">and id=#{id}</if>  
+			<!-- 用户id(关联用户表) -->  
+			<if test=" sellerUserId !=null and sellerUserId !='' ">and sellerUserId=#{sellerUserId}</if>  
+			<!-- 零件id(关联零件表) -->  
+			<if test=" sellPartId !=null and sellPartId !='' ">and sellPartId=#{sellPartId}</if>  
+			<!-- 矿机id(关联矿机表) -->  
+			<if test=" sellMillId !=null and sellMillId !='' ">and sellMillId=#{sellMillId}</if>  
+			<!-- 卖家名称 -->  
+			<if test=" sellerName !=null and sellerName !='' ">and sellerName=#{sellerName}</if>  
+			<!-- 卖家头像 -->  
+			<if test=" sellerPic !=null and sellerPic !='' ">and sellerPic=#{sellerPic}</if>  
+			<!-- 卖家联系电话 -->  
+			<if test=" sellerPhone !=null and sellerPhone !='' ">and sellerPhone=#{sellerPhone}</if>  
+			<!-- 商品名称 -->  
+			<if test=" productName !=null and productName !='' ">and productName=#{productName}</if>  
+			<!-- 商品详情 -->  
+			<if test=" productDetails !=null and productDetails !='' ">and productDetails=#{productDetails}</if>  
+			<!-- 商品图片 -->  
+			<if test=" productPic !=null and productPic !='' ">and productPic=#{productPic}</if> 
+		</where> 
+	</select>
+	<!-- 动态保存dealershop -->
+	<insert parameterType="Dealershop" id="addDealershop">INSERT INTO dealershop
+		<trim prefix="(" suffix=")" suffixOverrides=","> 
+			<!-- 主键id -->  
+			<if test=" id !=null and id !='' ">id,</if>  
+			<!-- 用户id(关联用户表) -->  
+			<if test=" sellerUserId !=null and sellerUserId !='' ">sellerUserId,</if>  
+			<!-- 零件id(关联零件表) -->  
+			<if test=" sellPartId !=null and sellPartId !='' ">sellPartId,</if>  
+			<!-- 矿机id(关联矿机表) -->  
+			<if test=" sellMillId !=null and sellMillId !='' ">sellMillId,</if>  
+			<!-- 卖家名称 -->  
+			<if test=" sellerName !=null and sellerName !='' ">sellerName,</if>  
+			<!-- 卖家头像 -->  
+			<if test=" sellerPic !=null and sellerPic !='' ">sellerPic,</if>  
+			<!-- 卖家联系电话 -->  
+			<if test=" sellerPhone !=null and sellerPhone !='' ">sellerPhone,</if>  
+			<!-- 商品名称 -->  
+			<if test=" productName !=null and productName !='' ">productName,</if>  
+			<!-- 商品详情 -->  
+			<if test=" productDetails !=null and productDetails !='' ">productDetails,</if>  
+			<!-- 商品图片 -->  
+			<if test=" productPic !=null and productPic !='' ">productPic,</if> 
+		</trim>  
+		<trim prefix="values(" suffix=")" suffixOverrides=","> 
+			<!-- 主键id -->  
+			<if test=" id !=null and id !='' ">#{id},</if>  
+			<!-- 用户id(关联用户表) -->  
+			<if test=" sellerUserId !=null and sellerUserId !='' ">#{sellerUserId},</if>  
+			<!-- 零件id(关联零件表) -->  
+			<if test=" sellPartId !=null and sellPartId !='' ">#{sellPartId},</if>  
+			<!-- 矿机id(关联矿机表) -->  
+			<if test=" sellMillId !=null and sellMillId !='' ">#{sellMillId},</if>  
+			<!-- 卖家名称 -->  
+			<if test=" sellerName !=null and sellerName !='' ">#{sellerName},</if>  
+			<!-- 卖家头像 -->  
+			<if test=" sellerPic !=null and sellerPic !='' ">#{sellerPic},</if>  
+			<!-- 卖家联系电话 -->  
+			<if test=" sellerPhone !=null and sellerPhone !='' ">#{sellerPhone},</if>  
+			<!-- 商品名称 -->  
+			<if test=" productName !=null and productName !='' ">#{productName},</if>  
+			<!-- 商品详情 -->  
+			<if test=" productDetails !=null and productDetails !='' ">#{productDetails},</if>  
+			<!-- 商品图片 -->  
+			<if test=" productPic !=null and productPic !='' ">#{productPic},</if> 
+		</trim>  
+		<selectKey resultType="int" keyProperty="id" order="AFTER">select LAST_INSERT_ID()</selectKey> 
+	</insert>
+	<!-- 动态更新dealershop -->
+	<update id="updateDealershop" parameterType="Dealershop">update dealershop set 
+		<trim suffixOverrides=","> 
+			<!-- 主键id -->  
+			<if test=" id !=null and id !='' ">id=#{id},</if>  
+			<!-- 用户id(关联用户表) -->  
+			<if test=" sellerUserId !=null and sellerUserId !='' ">sellerUserId=#{sellerUserId},</if>  
+			<!-- 零件id(关联零件表) -->  
+			<if test=" sellPartId !=null and sellPartId !='' ">sellPartId=#{sellPartId},</if>  
+			<!-- 矿机id(关联矿机表) -->  
+			<if test=" sellMillId !=null and sellMillId !='' ">sellMillId=#{sellMillId},</if>  
+			<!-- 卖家名称 -->  
+			<if test=" sellerName !=null and sellerName !='' ">sellerName=#{sellerName},</if>  
+			<!-- 卖家头像 -->  
+			<if test=" sellerPic !=null and sellerPic !='' ">sellerPic=#{sellerPic},</if>  
+			<!-- 卖家联系电话 -->  
+			<if test=" sellerPhone !=null and sellerPhone !='' ">sellerPhone=#{sellerPhone},</if>  
+			<!-- 商品名称 -->  
+			<if test=" productName !=null and productName !='' ">productName=#{productName},</if>  
+			<!-- 商品详情 -->  
+			<if test=" productDetails !=null and productDetails !='' ">productDetails=#{productDetails},</if>  
+			<!-- 商品图片 -->  
+			<if test=" productPic !=null and productPic !='' ">productPic=#{productPic},</if> 
+		</trim> WHERE id = #{id}
+	</update>
+</mapper>

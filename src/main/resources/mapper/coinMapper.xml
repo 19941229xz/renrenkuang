@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.renrenkuang.dao.CoinDao">
+	<!-- 动态条件查询coin -->
+	<select id="getAllCoin" parameterType="Coin" resultType="Coin">SELECT * FROM coin
+		<where> 
+			<!-- 主键id -->  
+			<if test=" id !=null and id !='' ">and id=#{id}</if>  
+			<!-- 币种名 -->  
+			<if test=" name !=null and name !='' ">and name=#{name}</if>  
+			<!-- 币种采矿地址 -->  
+			<if test=" miningAddress !=null and miningAddress !='' ">and miningAddress=#{miningAddress}</if>  
+			<!-- 游泳池Hashrate -->  
+			<if test=" poolHashrate !=null and poolHashrate !='' ">and poolHashrate=#{poolHashrate}</if>  
+			<!-- 总的Hashrate -->  
+			<if test=" totalHashrate !=null and totalHashrate !='' ">and totalHashrate=#{totalHashrate}</if>  
+			<!-- PPS模式输入 -->  
+			<if test=" PPSModeRevenue !=null and PPSModeRevenue !='' ">and PPSModeRevenue=#{PPSModeRevenue}</if>  
+			<!-- rate (币种率) -->  
+			<if test=" rate !=null and rate !='' ">and rate=#{rate}</if> 
+		</where> 
+	</select>
+	<!-- 动态保存coin -->
+	<insert parameterType="Coin" id="addCoin">INSERT INTO coin
+		<trim prefix="(" suffix=")" suffixOverrides=","> 
+			<!-- 主键id -->  
+			<if test=" id !=null and id !='' ">id,</if>  
+			<!-- 币种名 -->  
+			<if test=" name !=null and name !='' ">name,</if>  
+			<!-- 币种采矿地址 -->  
+			<if test=" miningAddress !=null and miningAddress !='' ">miningAddress,</if>  
+			<!-- 游泳池Hashrate -->  
+			<if test=" poolHashrate !=null and poolHashrate !='' ">poolHashrate,</if>  
+			<!-- 总的Hashrate -->  
+			<if test=" totalHashrate !=null and totalHashrate !='' ">totalHashrate,</if>  
+			<!-- PPS模式输入 -->  
+			<if test=" PPSModeRevenue !=null and PPSModeRevenue !='' ">PPSModeRevenue,</if>  
+			<!-- rate (币种率) -->  
+			<if test=" rate !=null and rate !='' ">rate,</if> 
+		</trim>  
+		<trim prefix="values(" suffix=")" suffixOverrides=","> 
+			<!-- 主键id -->  
+			<if test=" id !=null and id !='' ">#{id},</if>  
+			<!-- 币种名 -->  
+			<if test=" name !=null and name !='' ">#{name},</if>  
+			<!-- 币种采矿地址 -->  
+			<if test=" miningAddress !=null and miningAddress !='' ">#{miningAddress},</if>  
+			<!-- 游泳池Hashrate -->  
+			<if test=" poolHashrate !=null and poolHashrate !='' ">#{poolHashrate},</if>  
+			<!-- 总的Hashrate -->  
+			<if test=" totalHashrate !=null and totalHashrate !='' ">#{totalHashrate},</if>  
+			<!-- PPS模式输入 -->  
+			<if test=" PPSModeRevenue !=null and PPSModeRevenue !='' ">#{PPSModeRevenue},</if>  
+			<!-- rate (币种率) -->  
+			<if test=" rate !=null and rate !='' ">#{rate},</if> 
+		</trim>  
+		<selectKey resultType="int" keyProperty="id" order="AFTER">select LAST_INSERT_ID()</selectKey> 
+	</insert>
+	<!-- 动态更新coin -->
+	<update id="updateCoin" parameterType="Coin">update coin set 
+		<trim suffixOverrides=","> 
+			<!-- 主键id -->  
+			<if test=" id !=null and id !='' ">id=#{id},</if>  
+			<!-- 币种名 -->  
+			<if test=" name !=null and name !='' ">name=#{name},</if>  
+			<!-- 币种采矿地址 -->  
+			<if test=" miningAddress !=null and miningAddress !='' ">miningAddress=#{miningAddress},</if>  
+			<!-- 游泳池Hashrate -->  
+			<if test=" poolHashrate !=null and poolHashrate !='' ">poolHashrate=#{poolHashrate},</if>  
+			<!-- 总的Hashrate -->  
+			<if test=" totalHashrate !=null and totalHashrate !='' ">totalHashrate=#{totalHashrate},</if>  
+			<!-- PPS模式输入 -->  
+			<if test=" PPSModeRevenue !=null and PPSModeRevenue !='' ">PPSModeRevenue=#{PPSModeRevenue},</if>  
+			<!-- rate (币种率) -->  
+			<if test=" rate !=null and rate !='' ">rate=#{rate},</if> 
+		</trim> WHERE id = #{id}
+	</update>
+</mapper>

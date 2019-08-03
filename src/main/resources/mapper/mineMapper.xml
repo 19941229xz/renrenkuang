@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.renrenkuang.dao.MineDao">
+	<!-- 动态条件查询mine -->
+	<select id="getAllMine" parameterType="Mine" resultType="Mine">SELECT * FROM mine
+		<where> 
+			<!-- 主键id -->  
+			<if test=" id !=null and id !='' ">and id=#{id}</if>  
+			<!-- 矿场名字 -->  
+			<if test=" mineName !=null and mineName !='' ">and mineName=#{mineName}</if>  
+			<!-- 矿场图片1 -->  
+			<if test=" minePicture1 !=null and minePicture1 !='' ">and minePicture1=#{minePicture1}</if>  
+			<!-- 矿场图片2 -->  
+			<if test=" minePicture2 !=null and minePicture2 !='' ">and minePicture2=#{minePicture2}</if>  
+			<!-- 矿场图片3 -->  
+			<if test=" minePicture3 !=null and minePicture3 !='' ">and minePicture3=#{minePicture3}</if>  
+			<!-- 矿场图片4 -->  
+			<if test=" minePicture4 !=null and minePicture4 !='' ">and minePicture4=#{minePicture4}</if>  
+			<!-- 矿场介绍 -->  
+			<if test=" mineDetail !=null and mineDetail !='' ">and mineDetail=#{mineDetail}</if>  
+			<!-- 矿场地址 -->  
+			<if test=" mineAddress !=null and mineAddress !='' ">and mineAddress=#{mineAddress}</if>  
+			<!-- 矿场负责人姓名 -->  
+			<if test=" minePrincipalName !=null and minePrincipalName !='' ">and minePrincipalName=#{minePrincipalName}</if>  
+			<!-- 矿场联系电话 -->  
+			<if test=" phone !=null and phone !='' ">and phone=#{phone}</if> 
+		</where> 
+	</select>
+	<!-- 动态保存mine -->
+	<insert parameterType="Mine" id="addMine">INSERT INTO mine
+		<trim prefix="(" suffix=")" suffixOverrides=","> 
+			<!-- 主键id -->  
+			<if test=" id !=null and id !='' ">id,</if>  
+			<!-- 矿场名字 -->  
+			<if test=" mineName !=null and mineName !='' ">mineName,</if>  
+			<!-- 矿场图片1 -->  
+			<if test=" minePicture1 !=null and minePicture1 !='' ">minePicture1,</if>  
+			<!-- 矿场图片2 -->  
+			<if test=" minePicture2 !=null and minePicture2 !='' ">minePicture2,</if>  
+			<!-- 矿场图片3 -->  
+			<if test=" minePicture3 !=null and minePicture3 !='' ">minePicture3,</if>  
+			<!-- 矿场图片4 -->  
+			<if test=" minePicture4 !=null and minePicture4 !='' ">minePicture4,</if>  
+			<!-- 矿场介绍 -->  
+			<if test=" mineDetail !=null and mineDetail !='' ">mineDetail,</if>  
+			<!-- 矿场地址 -->  
+			<if test=" mineAddress !=null and mineAddress !='' ">mineAddress,</if>  
+			<!-- 矿场负责人姓名 -->  
+			<if test=" minePrincipalName !=null and minePrincipalName !='' ">minePrincipalName,</if>  
+			<!-- 矿场联系电话 -->  
+			<if test=" phone !=null and phone !='' ">phone,</if> 
+		</trim>  
+		<trim prefix="values(" suffix=")" suffixOverrides=","> 
+			<!-- 主键id -->  
+			<if test=" id !=null and id !='' ">#{id},</if>  
+			<!-- 矿场名字 -->  
+			<if test=" mineName !=null and mineName !='' ">#{mineName},</if>  
+			<!-- 矿场图片1 -->  
+			<if test=" minePicture1 !=null and minePicture1 !='' ">#{minePicture1},</if>  
+			<!-- 矿场图片2 -->  
+			<if test=" minePicture2 !=null and minePicture2 !='' ">#{minePicture2},</if>  
+			<!-- 矿场图片3 -->  
+			<if test=" minePicture3 !=null and minePicture3 !='' ">#{minePicture3},</if>  
+			<!-- 矿场图片4 -->  
+			<if test=" minePicture4 !=null and minePicture4 !='' ">#{minePicture4},</if>  
+			<!-- 矿场介绍 -->  
+			<if test=" mineDetail !=null and mineDetail !='' ">#{mineDetail},</if>  
+			<!-- 矿场地址 -->  
+			<if test=" mineAddress !=null and mineAddress !='' ">#{mineAddress},</if>  
+			<!-- 矿场负责人姓名 -->  
+			<if test=" minePrincipalName !=null and minePrincipalName !='' ">#{minePrincipalName},</if>  
+			<!-- 矿场联系电话 -->  
+			<if test=" phone !=null and phone !='' ">#{phone},</if> 
+		</trim>  
+		<selectKey resultType="int" keyProperty="id" order="AFTER">select LAST_INSERT_ID()</selectKey> 
+	</insert>
+	<!-- 动态更新mine -->
+	<update id="updateMine" parameterType="Mine">update mine set 
+		<trim suffixOverrides=","> 
+			<!-- 主键id -->  
+			<if test=" id !=null and id !='' ">id=#{id},</if>  
+			<!-- 矿场名字 -->  
+			<if test=" mineName !=null and mineName !='' ">mineName=#{mineName},</if>  
+			<!-- 矿场图片1 -->  
+			<if test=" minePicture1 !=null and minePicture1 !='' ">minePicture1=#{minePicture1},</if>  
+			<!-- 矿场图片2 -->  
+			<if test=" minePicture2 !=null and minePicture2 !='' ">minePicture2=#{minePicture2},</if>  
+			<!-- 矿场图片3 -->  
+			<if test=" minePicture3 !=null and minePicture3 !='' ">minePicture3=#{minePicture3},</if>  
+			<!-- 矿场图片4 -->  
+			<if test=" minePicture4 !=null and minePicture4 !='' ">minePicture4=#{minePicture4},</if>  
+			<!-- 矿场介绍 -->  
+			<if test=" mineDetail !=null and mineDetail !='' ">mineDetail=#{mineDetail},</if>  
+			<!-- 矿场地址 -->  
+			<if test=" mineAddress !=null and mineAddress !='' ">mineAddress=#{mineAddress},</if>  
+			<!-- 矿场负责人姓名 -->  
+			<if test=" minePrincipalName !=null and minePrincipalName !='' ">minePrincipalName=#{minePrincipalName},</if>  
+			<!-- 矿场联系电话 -->  
+			<if test=" phone !=null and phone !='' ">phone=#{phone},</if> 
+		</trim> WHERE id = #{id}
+	</update>
+</mapper>

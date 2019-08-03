@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.renrenkuang.dao.MillrepairsiteDao">
+	<!-- 动态条件查询millrepairsite -->
+	<select id="getAllMillrepairsite" parameterType="Millrepairsite" resultType="Millrepairsite">SELECT * FROM millrepairsite
+		<where> 
+			<!-- 主键id -->  
+			<if test=" id !=null and id !='' ">and id=#{id}</if>  
+			<!-- 联系电话 -->  
+			<if test=" phone !=null and phone !='' ">and phone=#{phone}</if>  
+			<!-- 维修地点 -->  
+			<if test=" repairSite !=null and repairSite !='' ">and repairSite=#{repairSite}</if>  
+			<!-- 维修店的名字 -->  
+			<if test=" name !=null and name !='' ">and name=#{name}</if> 
+		</where> 
+	</select>
+	<!-- 动态保存millrepairsite -->
+	<insert parameterType="Millrepairsite" id="addMillrepairsite">INSERT INTO millrepairsite
+		<trim prefix="(" suffix=")" suffixOverrides=","> 
+			<!-- 主键id -->  
+			<if test=" id !=null and id !='' ">id,</if>  
+			<!-- 联系电话 -->  
+			<if test=" phone !=null and phone !='' ">phone,</if>  
+			<!-- 维修地点 -->  
+			<if test=" repairSite !=null and repairSite !='' ">repairSite,</if>  
+			<!-- 维修店的名字 -->  
+			<if test=" name !=null and name !='' ">name,</if> 
+		</trim>  
+		<trim prefix="values(" suffix=")" suffixOverrides=","> 
+			<!-- 主键id -->  
+			<if test=" id !=null and id !='' ">#{id},</if>  
+			<!-- 联系电话 -->  
+			<if test=" phone !=null and phone !='' ">#{phone},</if>  
+			<!-- 维修地点 -->  
+			<if test=" repairSite !=null and repairSite !='' ">#{repairSite},</if>  
+			<!-- 维修店的名字 -->  
+			<if test=" name !=null and name !='' ">#{name},</if> 
+		</trim>  
+		<selectKey resultType="int" keyProperty="id" order="AFTER">select LAST_INSERT_ID()</selectKey> 
+	</insert>
+	<!-- 动态更新millrepairsite -->
+	<update id="updateMillrepairsite" parameterType="Millrepairsite">update millrepairsite set 
+		<trim suffixOverrides=","> 
+			<!-- 主键id -->  
+			<if test=" id !=null and id !='' ">id=#{id},</if>  
+			<!-- 联系电话 -->  
+			<if test=" phone !=null and phone !='' ">phone=#{phone},</if>  
+			<!-- 维修地点 -->  
+			<if test=" repairSite !=null and repairSite !='' ">repairSite=#{repairSite},</if>  
+			<!-- 维修店的名字 -->  
+			<if test=" name !=null and name !='' ">name=#{name},</if> 
+		</trim> WHERE id = #{id}
+	</update>
+</mapper>

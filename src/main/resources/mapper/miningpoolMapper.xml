@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.renrenkuang.dao.MiningpoolDao">
+	<!-- 动态条件查询miningpool -->
+	<select id="getAllMiningpool" parameterType="Miningpool" resultType="Miningpool">SELECT * FROM miningpool
+		<where> 
+			<!-- 主键id -->  
+			<if test=" id !=null and id !='' ">and id=#{id}</if>  
+			<!-- 矿池名字 -->  
+			<if test=" miningPoolName !=null and miningPoolName !='' ">and miningPoolName=#{miningPoolName}</if>  
+			<!-- 矿池介绍 -->  
+			<if test=" miningDetail !=null and miningDetail !='' ">and miningDetail=#{miningDetail}</if>  
+			<!-- 矿池网址 -->  
+			<if test=" miningPoolSite !=null and miningPoolSite !='' ">and miningPoolSite=#{miningPoolSite}</if> 
+		</where> 
+	</select>
+	<!-- 动态保存miningpool -->
+	<insert parameterType="Miningpool" id="addMiningpool">INSERT INTO miningpool
+		<trim prefix="(" suffix=")" suffixOverrides=","> 
+			<!-- 主键id -->  
+			<if test=" id !=null and id !='' ">id,</if>  
+			<!-- 矿池名字 -->  
+			<if test=" miningPoolName !=null and miningPoolName !='' ">miningPoolName,</if>  
+			<!-- 矿池介绍 -->  
+			<if test=" miningDetail !=null and miningDetail !='' ">miningDetail,</if>  
+			<!-- 矿池网址 -->  
+			<if test=" miningPoolSite !=null and miningPoolSite !='' ">miningPoolSite,</if> 
+		</trim>  
+		<trim prefix="values(" suffix=")" suffixOverrides=","> 
+			<!-- 主键id -->  
+			<if test=" id !=null and id !='' ">#{id},</if>  
+			<!-- 矿池名字 -->  
+			<if test=" miningPoolName !=null and miningPoolName !='' ">#{miningPoolName},</if>  
+			<!-- 矿池介绍 -->  
+			<if test=" miningDetail !=null and miningDetail !='' ">#{miningDetail},</if>  
+			<!-- 矿池网址 -->  
+			<if test=" miningPoolSite !=null and miningPoolSite !='' ">#{miningPoolSite},</if> 
+		</trim>  
+		<selectKey resultType="int" keyProperty="id" order="AFTER">select LAST_INSERT_ID()</selectKey> 
+	</insert>
+	<!-- 动态更新miningpool -->
+	<update id="updateMiningpool" parameterType="Miningpool">update miningpool set 
+		<trim suffixOverrides=","> 
+			<!-- 主键id -->  
+			<if test=" id !=null and id !='' ">id=#{id},</if>  
+			<!-- 矿池名字 -->  
+			<if test=" miningPoolName !=null and miningPoolName !='' ">miningPoolName=#{miningPoolName},</if>  
+			<!-- 矿池介绍 -->  
+			<if test=" miningDetail !=null and miningDetail !='' ">miningDetail=#{miningDetail},</if>  
+			<!-- 矿池网址 -->  
+			<if test=" miningPoolSite !=null and miningPoolSite !='' ">miningPoolSite=#{miningPoolSite},</if> 
+		</trim> WHERE id = #{id}
+	</update>
+</mapper>

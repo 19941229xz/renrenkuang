@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.renrenkuang.dao.PostmessageDao">
+	<!-- 动态条件查询postmessage -->
+	<select id="getAllPostmessage" parameterType="Postmessage" resultType="Postmessage">SELECT * FROM postmessage
+		<where> 
+			<!-- 主键id -->  
+			<if test=" id !=null and id !='' ">and id=#{id}</if>  
+			<!-- 用户id(关联用户表) -->  
+			<if test=" publishUserId !=null and publishUserId !='' ">and publishUserId=#{publishUserId}</if>  
+			<!-- 矿机id(关联矿机表) -->  
+			<if test=" millId !=null and millId !='' ">and millId=#{millId}</if>  
+			<!-- 发布类型  1:发布出售信息 2:发布求售信息 -->  
+			<if test=" publishType !=null and publishType !='' ">and publishType=#{publishType}</if>  
+			<!-- 发布标题 -->  
+			<if test=" publishTitle !=null and publishTitle !='' ">and publishTitle=#{publishTitle}</if>  
+			<!-- 发布内容 -->  
+			<if test=" publishContent !=null and publishContent !='' ">and publishContent=#{publishContent}</if>  
+			<!-- 发布时间 -->  
+			<if test=" publishTime !=null and publishTime !='' ">and publishTime=#{publishTime}</if>  
+			<!-- 发布备注 -->  
+			<if test=" remark !=null and remark !='' ">and remark=#{remark}</if>  
+			<!-- 联系电话 -->  
+			<if test=" phone !=null and phone !='' ">and phone=#{phone}</if>  
+			<!-- 发布地址 -->  
+			<if test=" releaseAddress !=null and releaseAddress !='' ">and releaseAddress=#{releaseAddress}</if>  
+			<!-- 性能图1 -->  
+			<if test=" performanceChart1 !=null and performanceChart1 !='' ">and performanceChart1=#{performanceChart1}</if>  
+			<!-- 性能图2 -->  
+			<if test=" performanceChart2 !=null and performanceChart2 !='' ">and performanceChart2=#{performanceChart2}</if>  
+			<!-- 性能图3 -->  
+			<if test=" performanceChart3 !=null and performanceChart3 !='' ">and performanceChart3=#{performanceChart3}</if>  
+			<!-- 机器SN码照片1 -->  
+			<if test=" SNImg1 !=null and SNImg1 !='' ">and SNImg1=#{SNImg1}</if>  
+			<!-- 机器SN码照片2 -->  
+			<if test=" SNImg2 !=null and SNImg2 !='' ">and SNImg2=#{SNImg2}</if>  
+			<!-- 机器SN码照片3 -->  
+			<if test=" SNImg3 !=null and SNImg3 !='' ">and SNImg3=#{SNImg3}</if>  
+			<!-- 配件外观图1 -->  
+			<if test=" externalView1 !=null and externalView1 !='' ">and externalView1=#{externalView1}</if>  
+			<!-- 配件外观图2 -->  
+			<if test=" externalView2 !=null and externalView2 !='' ">and externalView2=#{externalView2}</if>  
+			<!-- 配件外观图3 -->  
+			<if test=" externalView3 !=null and externalView3 !='' ">and externalView3=#{externalView3}</if>  
+			<!-- 算力图1 -->  
+			<if test=" computingPowerImg1 !=null and computingPowerImg1 !='' ">and computingPowerImg1=#{computingPowerImg1}</if>  
+			<!-- 算力图2 -->  
+			<if test=" computingPowerImg2 !=null and computingPowerImg2 !='' ">and computingPowerImg2=#{computingPowerImg2}</if>  
+			<!-- 算力图3 -->  
+			<if test=" computingPowerImg3 !=null and computingPowerImg3 !='' ">and computingPowerImg3=#{computingPowerImg3}</if>  
+			<!-- 是否置顶(默认未置顶) 1:不置顶 2:置顶 -->  
+			<if test=" isStick !=null and isStick !='' ">and isStick=#{isStick}</if>  
+			<!-- 是否明盘(默认不明盘) 1:不明盘 2:明盘 -->  
+			<if test=" isPublic !=null and isPublic !='' ">and isPublic=#{isPublic}</if>  
+			<!-- 是否质保(默认不质保) 1:不质保 2:质保 -->  
+			<if test=" isGuarantee !=null and isGuarantee !='' ">and isGuarantee=#{isGuarantee}</if>  
+			<!-- 置顶次数 -->  
+			<if test=" stickNumber !=null and stickNumber !='' ">and stickNumber=#{stickNumber}</if>  
+			<!-- 经度 -->  
+			<if test=" longitude !=null and longitude !='' ">and longitude=#{longitude}</if>  
+			<!-- 维度 -->  
+			<if test=" latitude !=null and latitude !='' ">and latitude=#{latitude}</if>  
+			<!-- 浏览次数 -->  
+			<if test=" viewCount !=null and viewCount !='' ">and viewCount=#{viewCount}</if>  
+			<!-- 评论数 -->  
+			<if test=" commentNum !=null and commentNum !='' ">and commentNum=#{commentNum}</if>  
+			<!-- 点赞数 -->  
+			<if test=" favourNum !=null and favourNum !='' ">and favourNum=#{favourNum}</if>  
+			<!-- 发布人头像 -->  
+			<if test=" authorPic !=null and authorPic !='' ">and authorPic=#{authorPic}</if>  
+			<!-- 发布人电话 -->  
+			<if test=" authorPhone !=null and authorPhone !='' ">and authorPhone=#{authorPhone}</if> 
+		</where> 
+	</select>
+	<!-- 动态保存postmessage -->
+	<insert parameterType="Postmessage" id="addPostmessage">INSERT INTO postmessage
+		<trim prefix="(" suffix=")" suffixOverrides=","> 
+			<!-- 主键id -->  
+			<if test=" id !=null and id !='' ">id,</if>  
+			<!-- 用户id(关联用户表) -->  
+			<if test=" publishUserId !=null and publishUserId !='' ">publishUserId,</if>  
+			<!-- 矿机id(关联矿机表) -->  
+			<if test=" millId !=null and millId !='' ">millId,</if>  
+			<!-- 发布类型  1:发布出售信息 2:发布求售信息 -->  
+			<if test=" publishType !=null and publishType !='' ">publishType,</if>  
+			<!-- 发布标题 -->  
+			<if test=" publishTitle !=null and publishTitle !='' ">publishTitle,</if>  
+			<!-- 发布内容 -->  
+			<if test=" publishContent !=null and publishContent !='' ">publishContent,</if>  
+			<!-- 发布时间 -->  
+			<if test=" publishTime !=null and publishTime !='' ">publishTime,</if>  
+			<!-- 发布备注 -->  
+			<if test=" remark !=null and remark !='' ">remark,</if>  
+			<!-- 联系电话 -->  
+			<if test=" phone !=null and phone !='' ">phone,</if>  
+			<!-- 发布地址 -->  
+			<if test=" releaseAddress !=null and releaseAddress !='' ">releaseAddress,</if>  
+			<!-- 性能图1 -->  
+			<if test=" performanceChart1 !=null and performanceChart1 !='' ">performanceChart1,</if>  
+			<!-- 性能图2 -->  
+			<if test=" performanceChart2 !=null and performanceChart2 !='' ">performanceChart2,</if>  
+			<!-- 性能图3 -->  
+			<if test=" performanceChart3 !=null and performanceChart3 !='' ">performanceChart3,</if>  
+			<!-- 机器SN码照片1 -->  
+			<if test=" SNImg1 !=null and SNImg1 !='' ">SNImg1,</if>  
+			<!-- 机器SN码照片2 -->  
+			<if test=" SNImg2 !=null and SNImg2 !='' ">SNImg2,</if>  
+			<!-- 机器SN码照片3 -->  
+			<if test=" SNImg3 !=null and SNImg3 !='' ">SNImg3,</if>  
+			<!-- 配件外观图1 -->  
+			<if test=" externalView1 !=null and externalView1 !='' ">externalView1,</if>  
+			<!-- 配件外观图2 -->  
+			<if test=" externalView2 !=null and externalView2 !='' ">externalView2,</if>  
+			<!-- 配件外观图3 -->  
+			<if test=" externalView3 !=null and externalView3 !='' ">externalView3,</if>  
+			<!-- 算力图1 -->  
+			<if test=" computingPowerImg1 !=null and computingPowerImg1 !='' ">computingPowerImg1,</if>  
+			<!-- 算力图2 -->  
+			<if test=" computingPowerImg2 !=null and computingPowerImg2 !='' ">computingPowerImg2,</if>  
+			<!-- 算力图3 -->  
+			<if test=" computingPowerImg3 !=null and computingPowerImg3 !='' ">computingPowerImg3,</if>  
+			<!-- 是否置顶(默认未置顶) 1:不置顶 2:置顶 -->  
+			<if test=" isStick !=null and isStick !='' ">isStick,</if>  
+			<!-- 是否明盘(默认不明盘) 1:不明盘 2:明盘 -->  
+			<if test=" isPublic !=null and isPublic !='' ">isPublic,</if>  
+			<!-- 是否质保(默认不质保) 1:不质保 2:质保 -->  
+			<if test=" isGuarantee !=null and isGuarantee !='' ">isGuarantee,</if>  
+			<!-- 置顶次数 -->  
+			<if test=" stickNumber !=null and stickNumber !='' ">stickNumber,</if>  
+			<!-- 经度 -->  
+			<if test=" longitude !=null and longitude !='' ">longitude,</if>  
+			<!-- 维度 -->  
+			<if test=" latitude !=null and latitude !='' ">latitude,</if>  
+			<!-- 浏览次数 -->  
+			<if test=" viewCount !=null and viewCount !='' ">viewCount,</if>  
+			<!-- 评论数 -->  
+			<if test=" commentNum !=null and commentNum !='' ">commentNum,</if>  
+			<!-- 点赞数 -->  
+			<if test=" favourNum !=null and favourNum !='' ">favourNum,</if>  
+			<!-- 发布人头像 -->  
+			<if test=" authorPic !=null and authorPic !='' ">authorPic,</if>  
+			<!-- 发布人电话 -->  
+			<if test=" authorPhone !=null and authorPhone !='' ">authorPhone,</if> 
+		</trim>  
+		<trim prefix="values(" suffix=")" suffixOverrides=","> 
+			<!-- 主键id -->  
+			<if test=" id !=null and id !='' ">#{id},</if>  
+			<!-- 用户id(关联用户表) -->  
+			<if test=" publishUserId !=null and publishUserId !='' ">#{publishUserId},</if>  
+			<!-- 矿机id(关联矿机表) -->  
+			<if test=" millId !=null and millId !='' ">#{millId},</if>  
+			<!-- 发布类型  1:发布出售信息 2:发布求售信息 -->  
+			<if test=" publishType !=null and publishType !='' ">#{publishType},</if>  
+			<!-- 发布标题 -->  
+			<if test=" publishTitle !=null and publishTitle !='' ">#{publishTitle},</if>  
+			<!-- 发布内容 -->  
+			<if test=" publishContent !=null and publishContent !='' ">#{publishContent},</if>  
+			<!-- 发布时间 -->  
+			<if test=" publishTime !=null and publishTime !='' ">#{publishTime},</if>  
+			<!-- 发布备注 -->  
+			<if test=" remark !=null and remark !='' ">#{remark},</if>  
+			<!-- 联系电话 -->  
+			<if test=" phone !=null and phone !='' ">#{phone},</if>  
+			<!-- 发布地址 -->  
+			<if test=" releaseAddress !=null and releaseAddress !='' ">#{releaseAddress},</if>  
+			<!-- 性能图1 -->  
+			<if test=" performanceChart1 !=null and performanceChart1 !='' ">#{performanceChart1},</if>  
+			<!-- 性能图2 -->  
+			<if test=" performanceChart2 !=null and performanceChart2 !='' ">#{performanceChart2},</if>  
+			<!-- 性能图3 -->  
+			<if test=" performanceChart3 !=null and performanceChart3 !='' ">#{performanceChart3},</if>  
+			<!-- 机器SN码照片1 -->  
+			<if test=" SNImg1 !=null and SNImg1 !='' ">#{SNImg1},</if>  
+			<!-- 机器SN码照片2 -->  
+			<if test=" SNImg2 !=null and SNImg2 !='' ">#{SNImg2},</if>  
+			<!-- 机器SN码照片3 -->  
+			<if test=" SNImg3 !=null and SNImg3 !='' ">#{SNImg3},</if>  
+			<!-- 配件外观图1 -->  
+			<if test=" externalView1 !=null and externalView1 !='' ">#{externalView1},</if>  
+			<!-- 配件外观图2 -->  
+			<if test=" externalView2 !=null and externalView2 !='' ">#{externalView2},</if>  
+			<!-- 配件外观图3 -->  
+			<if test=" externalView3 !=null and externalView3 !='' ">#{externalView3},</if>  
+			<!-- 算力图1 -->  
+			<if test=" computingPowerImg1 !=null and computingPowerImg1 !='' ">#{computingPowerImg1},</if>  
+			<!-- 算力图2 -->  
+			<if test=" computingPowerImg2 !=null and computingPowerImg2 !='' ">#{computingPowerImg2},</if>  
+			<!-- 算力图3 -->  
+			<if test=" computingPowerImg3 !=null and computingPowerImg3 !='' ">#{computingPowerImg3},</if>  
+			<!-- 是否置顶(默认未置顶) 1:不置顶 2:置顶 -->  
+			<if test=" isStick !=null and isStick !='' ">#{isStick},</if>  
+			<!-- 是否明盘(默认不明盘) 1:不明盘 2:明盘 -->  
+			<if test=" isPublic !=null and isPublic !='' ">#{isPublic},</if>  
+			<!-- 是否质保(默认不质保) 1:不质保 2:质保 -->  
+			<if test=" isGuarantee !=null and isGuarantee !='' ">#{isGuarantee},</if>  
+			<!-- 置顶次数 -->  
+			<if test=" stickNumber !=null and stickNumber !='' ">#{stickNumber},</if>  
+			<!-- 经度 -->  
+			<if test=" longitude !=null and longitude !='' ">#{longitude},</if>  
+			<!-- 维度 -->  
+			<if test=" latitude !=null and latitude !='' ">#{latitude},</if>  
+			<!-- 浏览次数 -->  
+			<if test=" viewCount !=null and viewCount !='' ">#{viewCount},</if>  
+			<!-- 评论数 -->  
+			<if test=" commentNum !=null and commentNum !='' ">#{commentNum},</if>  
+			<!-- 点赞数 -->  
+			<if test=" favourNum !=null and favourNum !='' ">#{favourNum},</if>  
+			<!-- 发布人头像 -->  
+			<if test=" authorPic !=null and authorPic !='' ">#{authorPic},</if>  
+			<!-- 发布人电话 -->  
+			<if test=" authorPhone !=null and authorPhone !='' ">#{authorPhone},</if> 
+		</trim>  
+		<selectKey resultType="int" keyProperty="id" order="AFTER">select LAST_INSERT_ID()</selectKey> 
+	</insert>
+	<!-- 动态更新postmessage -->
+	<update id="updatePostmessage" parameterType="Postmessage">update postmessage set 
+		<trim suffixOverrides=","> 
+			<!-- 主键id -->  
+			<if test=" id !=null and id !='' ">id=#{id},</if>  
+			<!-- 用户id(关联用户表) -->  
+			<if test=" publishUserId !=null and publishUserId !='' ">publishUserId=#{publishUserId},</if>  
+			<!-- 矿机id(关联矿机表) -->  
+			<if test=" millId !=null and millId !='' ">millId=#{millId},</if>  
+			<!-- 发布类型  1:发布出售信息 2:发布求售信息 -->  
+			<if test=" publishType !=null and publishType !='' ">publishType=#{publishType},</if>  
+			<!-- 发布标题 -->  
+			<if test=" publishTitle !=null and publishTitle !='' ">publishTitle=#{publishTitle},</if>  
+			<!-- 发布内容 -->  
+			<if test=" publishContent !=null and publishContent !='' ">publishContent=#{publishContent},</if>  
+			<!-- 发布时间 -->  
+			<if test=" publishTime !=null and publishTime !='' ">publishTime=#{publishTime},</if>  
+			<!-- 发布备注 -->  
+			<if test=" remark !=null and remark !='' ">remark=#{remark},</if>  
+			<!-- 联系电话 -->  
+			<if test=" phone !=null and phone !='' ">phone=#{phone},</if>  
+			<!-- 发布地址 -->  
+			<if test=" releaseAddress !=null and releaseAddress !='' ">releaseAddress=#{releaseAddress},</if>  
+			<!-- 性能图1 -->  
+			<if test=" performanceChart1 !=null and performanceChart1 !='' ">performanceChart1=#{performanceChart1},</if>  
+			<!-- 性能图2 -->  
+			<if test=" performanceChart2 !=null and performanceChart2 !='' ">performanceChart2=#{performanceChart2},</if>  
+			<!-- 性能图3 -->  
+			<if test=" performanceChart3 !=null and performanceChart3 !='' ">performanceChart3=#{performanceChart3},</if>  
+			<!-- 机器SN码照片1 -->  
+			<if test=" SNImg1 !=null and SNImg1 !='' ">SNImg1=#{SNImg1},</if>  
+			<!-- 机器SN码照片2 -->  
+			<if test=" SNImg2 !=null and SNImg2 !='' ">SNImg2=#{SNImg2},</if>  
+			<!-- 机器SN码照片3 -->  
+			<if test=" SNImg3 !=null and SNImg3 !='' ">SNImg3=#{SNImg3},</if>  
+			<!-- 配件外观图1 -->  
+			<if test=" externalView1 !=null and externalView1 !='' ">externalView1=#{externalView1},</if>  
+			<!-- 配件外观图2 -->  
+			<if test=" externalView2 !=null and externalView2 !='' ">externalView2=#{externalView2},</if>  
+			<!-- 配件外观图3 -->  
+			<if test=" externalView3 !=null and externalView3 !='' ">externalView3=#{externalView3},</if>  
+			<!-- 算力图1 -->  
+			<if test=" computingPowerImg1 !=null and computingPowerImg1 !='' ">computingPowerImg1=#{computingPowerImg1},</if>  
+			<!-- 算力图2 -->  
+			<if test=" computingPowerImg2 !=null and computingPowerImg2 !='' ">computingPowerImg2=#{computingPowerImg2},</if>  
+			<!-- 算力图3 -->  
+			<if test=" computingPowerImg3 !=null and computingPowerImg3 !='' ">computingPowerImg3=#{computingPowerImg3},</if>  
+			<!-- 是否置顶(默认未置顶) 1:不置顶 2:置顶 -->  
+			<if test=" isStick !=null and isStick !='' ">isStick=#{isStick},</if>  
+			<!-- 是否明盘(默认不明盘) 1:不明盘 2:明盘 -->  
+			<if test=" isPublic !=null and isPublic !='' ">isPublic=#{isPublic},</if>  
+			<!-- 是否质保(默认不质保) 1:不质保 2:质保 -->  
+			<if test=" isGuarantee !=null and isGuarantee !='' ">isGuarantee=#{isGuarantee},</if>  
+			<!-- 置顶次数 -->  
+			<if test=" stickNumber !=null and stickNumber !='' ">stickNumber=#{stickNumber},</if>  
+			<!-- 经度 -->  
+			<if test=" longitude !=null and longitude !='' ">longitude=#{longitude},</if>  
+			<!-- 维度 -->  
+			<if test=" latitude !=null and latitude !='' ">latitude=#{latitude},</if>  
+			<!-- 浏览次数 -->  
+			<if test=" viewCount !=null and viewCount !='' ">viewCount=#{viewCount},</if>  
+			<!-- 评论数 -->  
+			<if test=" commentNum !=null and commentNum !='' ">commentNum=#{commentNum},</if>  
+			<!-- 点赞数 -->  
+			<if test=" favourNum !=null and favourNum !='' ">favourNum=#{favourNum},</if>  
+			<!-- 发布人头像 -->  
+			<if test=" authorPic !=null and authorPic !='' ">authorPic=#{authorPic},</if>  
+			<!-- 发布人电话 -->  
+			<if test=" authorPhone !=null and authorPhone !='' ">authorPhone=#{authorPhone},</if> 
+		</trim> WHERE id = #{id}
+	</update>
+</mapper>

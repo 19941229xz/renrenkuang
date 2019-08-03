@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.renrenkuang.dao.IndustrytrendsDao">
+	<!-- 动态条件查询industrytrends -->
+	<select id="getAllIndustrytrends" parameterType="Industrytrends" resultType="Industrytrends">SELECT * FROM industrytrends
+		<where> 
+			<!-- 主键id -->  
+			<if test=" id !=null and id !='' ">and id=#{id}</if>  
+			<!-- 作者 如未登录，为游客，如已登录，为userName -->  
+			<if test=" author !=null and author !='' ">and author=#{author}</if>  
+			<!-- 标题 -->  
+			<if test=" trendTitle !=null and trendTitle !='' ">and trendTitle=#{trendTitle}</if>  
+			<!-- 头像 -->  
+			<if test=" headPic !=null and headPic !='' ">and headPic=#{headPic}</if>  
+			<!-- 内容 -->  
+			<if test=" content !=null and content !='' ">and content=#{content}</if>  
+			<!-- 发布时间 -->  
+			<if test=" issueTime !=null and issueTime !='' ">and issueTime=#{issueTime}</if>  
+			<!-- 评论 -->  
+			<if test=" comment !=null and comment !='' ">and comment=#{comment}</if>  
+			<!-- 评论条数 -->  
+			<if test=" commentNum !=null and commentNum !='' ">and commentNum=#{commentNum}</if>  
+			<!-- 点赞数 -->  
+			<if test=" favourNum !=null and favourNum !='' ">and favourNum=#{favourNum}</if> 
+		</where> 
+	</select>
+	<!-- 动态保存industrytrends -->
+	<insert parameterType="Industrytrends" id="addIndustrytrends">INSERT INTO industrytrends
+		<trim prefix="(" suffix=")" suffixOverrides=","> 
+			<!-- 主键id -->  
+			<if test=" id !=null and id !='' ">id,</if>  
+			<!-- 作者 如未登录，为游客，如已登录，为userName -->  
+			<if test=" author !=null and author !='' ">author,</if>  
+			<!-- 标题 -->  
+			<if test=" trendTitle !=null and trendTitle !='' ">trendTitle,</if>  
+			<!-- 头像 -->  
+			<if test=" headPic !=null and headPic !='' ">headPic,</if>  
+			<!-- 内容 -->  
+			<if test=" content !=null and content !='' ">content,</if>  
+			<!-- 发布时间 -->  
+			<if test=" issueTime !=null and issueTime !='' ">issueTime,</if>  
+			<!-- 评论 -->  
+			<if test=" comment !=null and comment !='' ">comment,</if>  
+			<!-- 评论条数 -->  
+			<if test=" commentNum !=null and commentNum !='' ">commentNum,</if>  
+			<!-- 点赞数 -->  
+			<if test=" favourNum !=null and favourNum !='' ">favourNum,</if> 
+		</trim>  
+		<trim prefix="values(" suffix=")" suffixOverrides=","> 
+			<!-- 主键id -->  
+			<if test=" id !=null and id !='' ">#{id},</if>  
+			<!-- 作者 如未登录，为游客，如已登录，为userName -->  
+			<if test=" author !=null and author !='' ">#{author},</if>  
+			<!-- 标题 -->  
+			<if test=" trendTitle !=null and trendTitle !='' ">#{trendTitle},</if>  
+			<!-- 头像 -->  
+			<if test=" headPic !=null and headPic !='' ">#{headPic},</if>  
+			<!-- 内容 -->  
+			<if test=" content !=null and content !='' ">#{content},</if>  
+			<!-- 发布时间 -->  
+			<if test=" issueTime !=null and issueTime !='' ">#{issueTime},</if>  
+			<!-- 评论 -->  
+			<if test=" comment !=null and comment !='' ">#{comment},</if>  
+			<!-- 评论条数 -->  
+			<if test=" commentNum !=null and commentNum !='' ">#{commentNum},</if>  
+			<!-- 点赞数 -->  
+			<if test=" favourNum !=null and favourNum !='' ">#{favourNum},</if> 
+		</trim>  
+		<selectKey resultType="int" keyProperty="id" order="AFTER">select LAST_INSERT_ID()</selectKey> 
+	</insert>
+	<!-- 动态更新industrytrends -->
+	<update id="updateIndustrytrends" parameterType="Industrytrends">update industrytrends set 
+		<trim suffixOverrides=","> 
+			<!-- 主键id -->  
+			<if test=" id !=null and id !='' ">id=#{id},</if>  
+			<!-- 作者 如未登录，为游客，如已登录，为userName -->  
+			<if test=" author !=null and author !='' ">author=#{author},</if>  
+			<!-- 标题 -->  
+			<if test=" trendTitle !=null and trendTitle !='' ">trendTitle=#{trendTitle},</if>  
+			<!-- 头像 -->  
+			<if test=" headPic !=null and headPic !='' ">headPic=#{headPic},</if>  
+			<!-- 内容 -->  
+			<if test=" content !=null and content !='' ">content=#{content},</if>  
+			<!-- 发布时间 -->  
+			<if test=" issueTime !=null and issueTime !='' ">issueTime=#{issueTime},</if>  
+			<!-- 评论 -->  
+			<if test=" comment !=null and comment !='' ">comment=#{comment},</if>  
+			<!-- 评论条数 -->  
+			<if test=" commentNum !=null and commentNum !='' ">commentNum=#{commentNum},</if>  
+			<!-- 点赞数 -->  
+			<if test=" favourNum !=null and favourNum !='' ">favourNum=#{favourNum},</if> 
+		</trim> WHERE id = #{id}
+	</update>
+</mapper>
