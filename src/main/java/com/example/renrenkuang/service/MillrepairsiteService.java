@@ -19,6 +19,4 @@ public interface MillrepairsiteService {
     public Millrepairsite getMillrepairsiteById(int id);
 
 
-
-
 }

@@ -75,8 +75,7 @@ public class DealershopServiceImpl implements DealershopService {
     	return dealershopDao.getDealershopById(id);
     	
     }
-
-
-
+    
+    
 
 }

@@ -19,6 +19,4 @@ public interface DigCoinService {
     public DigCoin getDigCoinById(int id);
 
 
-
-
 }

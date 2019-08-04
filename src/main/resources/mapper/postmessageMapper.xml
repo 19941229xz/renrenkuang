@@ -18,7 +18,7 @@
 			<!-- 发布内容 -->  
 			<if test=" publishContent !=null and publishContent !='' ">and publishContent=#{publishContent}</if>  
 			<!-- 发布时间 -->  
-			<if test=" publishTime !=null and publishTime !='' ">and publishTime=#{publishTime}</if>  
+			<if test=" publishTime !=null ">and publishTime=#{publishTime}</if>  
 			<!-- 发布备注 -->  
 			<if test=" remark !=null and remark !='' ">and remark=#{remark}</if>  
 			<!-- 联系电话 -->  
@@ -70,7 +70,9 @@
 			<!-- 发布人头像 -->  
 			<if test=" authorPic !=null and authorPic !='' ">and authorPic=#{authorPic}</if>  
 			<!-- 发布人电话 -->  
-			<if test=" authorPhone !=null and authorPhone !='' ">and authorPhone=#{authorPhone}</if> 
+			<if test=" authorPhone !=null and authorPhone !='' ">and authorPhone=#{authorPhone}</if>  
+			<!-- 是否审核通过 1未通过  2已审核通过 -->  
+			<if test=" isChecked !=null and isChecked !='' ">and isChecked=#{isChecked}</if> 
 		</where> 
 	</select>
 	<!-- 动态保存postmessage -->
@@ -89,7 +91,7 @@
 			<!-- 发布内容 -->  
 			<if test=" publishContent !=null and publishContent !='' ">publishContent,</if>  
 			<!-- 发布时间 -->  
-			<if test=" publishTime !=null and publishTime !='' ">publishTime,</if>  
+			<if test=" publishTime !=null ">publishTime,</if>  
 			<!-- 发布备注 -->  
 			<if test=" remark !=null and remark !='' ">remark,</if>  
 			<!-- 联系电话 -->  
@@ -141,7 +143,9 @@
 			<!-- 发布人头像 -->  
 			<if test=" authorPic !=null and authorPic !='' ">authorPic,</if>  
 			<!-- 发布人电话 -->  
-			<if test=" authorPhone !=null and authorPhone !='' ">authorPhone,</if> 
+			<if test=" authorPhone !=null and authorPhone !='' ">authorPhone,</if>  
+			<!-- 是否审核通过 1未通过  2已审核通过 -->  
+			<if test=" isChecked !=null and isChecked !='' ">isChecked,</if> 
 		</trim>  
 		<trim prefix="values(" suffix=")" suffixOverrides=","> 
 			<!-- 主键id -->  
@@ -157,7 +161,7 @@
 			<!-- 发布内容 -->  
 			<if test=" publishContent !=null and publishContent !='' ">#{publishContent},</if>  
 			<!-- 发布时间 -->  
-			<if test=" publishTime !=null and publishTime !='' ">#{publishTime},</if>  
+			<if test=" publishTime !=null ">#{publishTime},</if>  
 			<!-- 发布备注 -->  
 			<if test=" remark !=null and remark !='' ">#{remark},</if>  
 			<!-- 联系电话 -->  
@@ -209,7 +213,9 @@
 			<!-- 发布人头像 -->  
 			<if test=" authorPic !=null and authorPic !='' ">#{authorPic},</if>  
 			<!-- 发布人电话 -->  
-			<if test=" authorPhone !=null and authorPhone !='' ">#{authorPhone},</if> 
+			<if test=" authorPhone !=null and authorPhone !='' ">#{authorPhone},</if>  
+			<!-- 是否审核通过 1未通过  2已审核通过 -->  
+			<if test=" isChecked !=null and isChecked !='' ">#{isChecked},</if> 
 		</trim>  
 		<selectKey resultType="int" keyProperty="id" order="AFTER">select LAST_INSERT_ID()</selectKey> 
 	</insert>
@@ -229,7 +235,7 @@
 			<!-- 发布内容 -->  
 			<if test=" publishContent !=null and publishContent !='' ">publishContent=#{publishContent},</if>  
 			<!-- 发布时间 -->  
-			<if test=" publishTime !=null and publishTime !='' ">publishTime=#{publishTime},</if>  
+			<if test=" publishTime !=null ">publishTime=#{publishTime},</if>  
 			<!-- 发布备注 -->  
 			<if test=" remark !=null and remark !='' ">remark=#{remark},</if>  
 			<!-- 联系电话 -->  
@@ -281,7 +287,9 @@
 			<!-- 发布人头像 -->  
 			<if test=" authorPic !=null and authorPic !='' ">authorPic=#{authorPic},</if>  
 			<!-- 发布人电话 -->  
-			<if test=" authorPhone !=null and authorPhone !='' ">authorPhone=#{authorPhone},</if> 
+			<if test=" authorPhone !=null and authorPhone !='' ">authorPhone=#{authorPhone},</if>  
+			<!-- 是否审核通过 1未通过  2已审核通过 -->  
+			<if test=" isChecked !=null and isChecked !='' ">isChecked=#{isChecked},</if> 
 		</trim> WHERE id = #{id}
 	</update>
 </mapper>

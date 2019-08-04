@@ -52,5 +52,15 @@ public class DigCoinController {
         DigCoin digCoin=digCoinService.getDigCoinById(id);
         return digCoin!=null?MyRsp.success(digCoin):MyRsp.wrapper(new MyException(HttpCode.ITEM_NOT_FOUND));
     }
+    
+    @PostMapping("/batchDeleteDigCoinByIds")
+    public Object batchDeleteDigCoinByIds(@RequestBody int[] ids){
+	    int affectedNum=0;
+        for (int id:ids){
+            affectedNum+= (digCoinService.removeDigCoinById(id)?1:0);
+        }
+	    return affectedNum==ids.length?MyRsp.success(null).msg("批量删除成功"):
+                MyRsp.error().msg("批量删除失败");
+    }
 	
 }

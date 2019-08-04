@@ -19,6 +19,4 @@ public interface MineService {
     public Mine getMineById(int id);
 
 
-
-
 }

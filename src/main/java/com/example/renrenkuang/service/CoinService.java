@@ -19,6 +19,4 @@ public interface CoinService {
     public Coin getCoinById(int id);
 
 
-
-
 }

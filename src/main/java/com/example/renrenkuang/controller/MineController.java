@@ -52,5 +52,15 @@ public class MineController {
         Mine mine=mineService.getMineById(id);
         return mine!=null?MyRsp.success(mine):MyRsp.wrapper(new MyException(HttpCode.ITEM_NOT_FOUND));
     }
+    
+    @PostMapping("/batchDeleteMineByIds")
+    public Object batchDeleteMineByIds(@RequestBody int[] ids){
+	    int affectedNum=0;
+        for (int id:ids){
+            affectedNum+= (mineService.removeMineById(id)?1:0);
+        }
+	    return affectedNum==ids.length?MyRsp.success(null).msg("批量删除成功"):
+                MyRsp.error().msg("批量删除失败");
+    }
 	
 }

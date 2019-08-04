@@ -19,6 +19,4 @@ public interface DealershopService {
     public Dealershop getDealershopById(int id);
 
 
-
-
 }

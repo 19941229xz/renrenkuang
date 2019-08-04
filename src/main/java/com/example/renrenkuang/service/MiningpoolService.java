@@ -19,6 +19,4 @@ public interface MiningpoolService {
     public Miningpool getMiningpoolById(int id);
 
 
-
-
 }

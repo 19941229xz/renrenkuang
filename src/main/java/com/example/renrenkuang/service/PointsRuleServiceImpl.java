@@ -75,8 +75,7 @@ public class PointsRuleServiceImpl implements PointsRuleService {
     	return pointsRuleDao.getPointsRuleById(id);
     	
     }
-
-
-
+    
+    
 
 }

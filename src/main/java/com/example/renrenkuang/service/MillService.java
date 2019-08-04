@@ -19,6 +19,4 @@ public interface MillService {
     public Mill getMillById(int id);
 
 
-
-
 }

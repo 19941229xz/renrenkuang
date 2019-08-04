@@ -52,5 +52,15 @@ public class IndustrytrendsController {
         Industrytrends industrytrends=industrytrendsService.getIndustrytrendsById(id);
         return industrytrends!=null?MyRsp.success(industrytrends):MyRsp.wrapper(new MyException(HttpCode.ITEM_NOT_FOUND));
     }
+    
+    @PostMapping("/batchDeleteIndustrytrendsByIds")
+    public Object batchDeleteIndustrytrendsByIds(@RequestBody int[] ids){
+	    int affectedNum=0;
+        for (int id:ids){
+            affectedNum+= (industrytrendsService.removeIndustrytrendsById(id)?1:0);
+        }
+	    return affectedNum==ids.length?MyRsp.success(null).msg("批量删除成功"):
+                MyRsp.error().msg("批量删除失败");
+    }
 	
 }

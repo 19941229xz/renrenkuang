@@ -32,7 +32,7 @@
 			<!-- 是否在保质期 1是 2 不是 -->  
 			<if test=" isWarrantyPeriod !=null and isWarrantyPeriod !='' ">and isWarrantyPeriod=#{isWarrantyPeriod}</if>  
 			<!-- 出厂日期 -->  
-			<if test=" manufactureDate !=null and manufactureDate !='' ">and manufactureDate=#{manufactureDate}</if>  
+			<if test=" manufactureDate !=null ">and manufactureDate=#{manufactureDate}</if>  
 			<!-- 不在质保期是否提供店保 1 是 2 不是 -->  
 			<if test=" isShopIsProtected !=null and isShopIsProtected !='' ">and isShopIsProtected=#{isShopIsProtected}</if> 
 		</where> 
@@ -67,7 +67,7 @@
 			<!-- 是否在保质期 1是 2 不是 -->  
 			<if test=" isWarrantyPeriod !=null and isWarrantyPeriod !='' ">isWarrantyPeriod,</if>  
 			<!-- 出厂日期 -->  
-			<if test=" manufactureDate !=null and manufactureDate !='' ">manufactureDate,</if>  
+			<if test=" manufactureDate !=null ">manufactureDate,</if>  
 			<!-- 不在质保期是否提供店保 1 是 2 不是 -->  
 			<if test=" isShopIsProtected !=null and isShopIsProtected !='' ">isShopIsProtected,</if> 
 		</trim>  
@@ -99,7 +99,7 @@
 			<!-- 是否在保质期 1是 2 不是 -->  
 			<if test=" isWarrantyPeriod !=null and isWarrantyPeriod !='' ">#{isWarrantyPeriod},</if>  
 			<!-- 出厂日期 -->  
-			<if test=" manufactureDate !=null and manufactureDate !='' ">#{manufactureDate},</if>  
+			<if test=" manufactureDate !=null ">#{manufactureDate},</if>  
 			<!-- 不在质保期是否提供店保 1 是 2 不是 -->  
 			<if test=" isShopIsProtected !=null and isShopIsProtected !='' ">#{isShopIsProtected},</if> 
 		</trim>  
@@ -135,7 +135,7 @@
 			<!-- 是否在保质期 1是 2 不是 -->  
 			<if test=" isWarrantyPeriod !=null and isWarrantyPeriod !='' ">isWarrantyPeriod=#{isWarrantyPeriod},</if>  
 			<!-- 出厂日期 -->  
-			<if test=" manufactureDate !=null and manufactureDate !='' ">manufactureDate=#{manufactureDate},</if>  
+			<if test=" manufactureDate !=null ">manufactureDate=#{manufactureDate},</if>  
 			<!-- 不在质保期是否提供店保 1 是 2 不是 -->  
 			<if test=" isShopIsProtected !=null and isShopIsProtected !='' ">isShopIsProtected=#{isShopIsProtected},</if> 
 		</trim> WHERE id = #{id}

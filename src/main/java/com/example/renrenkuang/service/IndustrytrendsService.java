@@ -19,6 +19,4 @@ public interface IndustrytrendsService {
     public Industrytrends getIndustrytrendsById(int id);
 
 
-
-
 }

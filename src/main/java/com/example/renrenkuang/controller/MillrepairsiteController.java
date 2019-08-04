@@ -52,5 +52,15 @@ public class MillrepairsiteController {
         Millrepairsite millrepairsite=millrepairsiteService.getMillrepairsiteById(id);
         return millrepairsite!=null?MyRsp.success(millrepairsite):MyRsp.wrapper(new MyException(HttpCode.ITEM_NOT_FOUND));
     }
+    
+    @PostMapping("/batchDeleteMillrepairsiteByIds")
+    public Object batchDeleteMillrepairsiteByIds(@RequestBody int[] ids){
+	    int affectedNum=0;
+        for (int id:ids){
+            affectedNum+= (millrepairsiteService.removeMillrepairsiteById(id)?1:0);
+        }
+	    return affectedNum==ids.length?MyRsp.success(null).msg("批量删除成功"):
+                MyRsp.error().msg("批量删除失败");
+    }
 	
 }

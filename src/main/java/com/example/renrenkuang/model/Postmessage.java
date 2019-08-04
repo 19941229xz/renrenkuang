@@ -111,5 +111,8 @@ public class Postmessage implements Serializable {
 	// 发布人电话
     @ApiModelProperty(value = "发布人电话" ,name = "authorPhone")
 	private String authorPhone;
+	// 是否审核通过 1未通过  2已审核通过
+    @ApiModelProperty(value = "是否审核通过 1未通过  2已审核通过" ,name = "isChecked")
+	private Integer isChecked;
 
 }

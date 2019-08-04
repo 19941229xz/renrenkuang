@@ -75,8 +75,7 @@ public class IndustrytrendsServiceImpl implements IndustrytrendsService {
     	return industrytrendsDao.getIndustrytrendsById(id);
     	
     }
-
-
-
+    
+    
 
 }

@@ -52,5 +52,15 @@ public class CoinController {
         Coin coin=coinService.getCoinById(id);
         return coin!=null?MyRsp.success(coin):MyRsp.wrapper(new MyException(HttpCode.ITEM_NOT_FOUND));
     }
+    
+    @PostMapping("/batchDeleteCoinByIds")
+    public Object batchDeleteCoinByIds(@RequestBody int[] ids){
+	    int affectedNum=0;
+        for (int id:ids){
+            affectedNum+= (coinService.removeCoinById(id)?1:0);
+        }
+	    return affectedNum==ids.length?MyRsp.success(null).msg("批量删除成功"):
+                MyRsp.error().msg("批量删除失败");
+    }
 	
 }

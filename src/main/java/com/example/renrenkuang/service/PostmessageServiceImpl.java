@@ -75,8 +75,7 @@ public class PostmessageServiceImpl implements PostmessageService {
     	return postmessageDao.getPostmessageById(id);
     	
     }
-
-
-
+    
+    
 
 }

@@ -75,8 +75,7 @@ public class MineServiceImpl implements MineService {
     	return mineDao.getMineById(id);
     	
     }
-
-
-
+    
+    
 
 }

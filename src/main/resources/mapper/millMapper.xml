@@ -22,7 +22,7 @@
 			<!-- 是否有显卡（1有 2没有） -->  
 			<if test=" hasGPU !=null and hasGPU !='' ">and hasGPU=#{hasGPU}</if>  
 			<!-- 生产日期 -->  
-			<if test=" manufactureDate !=null and manufactureDate !='' ">and manufactureDate=#{manufactureDate}</if>  
+			<if test=" manufactureDate !=null ">and manufactureDate=#{manufactureDate}</if>  
 			<!-- 数量 -->  
 			<if test=" num !=null and num !='' ">and num=#{num}</if>  
 			<!-- 是否二手（1二手 2新货） -->  
@@ -49,7 +49,7 @@
 			<!-- 是否有显卡（1有 2没有） -->  
 			<if test=" hasGPU !=null and hasGPU !='' ">hasGPU,</if>  
 			<!-- 生产日期 -->  
-			<if test=" manufactureDate !=null and manufactureDate !='' ">manufactureDate,</if>  
+			<if test=" manufactureDate !=null ">manufactureDate,</if>  
 			<!-- 数量 -->  
 			<if test=" num !=null and num !='' ">num,</if>  
 			<!-- 是否二手（1二手 2新货） -->  
@@ -73,7 +73,7 @@
 			<!-- 是否有显卡（1有 2没有） -->  
 			<if test=" hasGPU !=null and hasGPU !='' ">#{hasGPU},</if>  
 			<!-- 生产日期 -->  
-			<if test=" manufactureDate !=null and manufactureDate !='' ">#{manufactureDate},</if>  
+			<if test=" manufactureDate !=null ">#{manufactureDate},</if>  
 			<!-- 数量 -->  
 			<if test=" num !=null and num !='' ">#{num},</if>  
 			<!-- 是否二手（1二手 2新货） -->  
@@ -101,7 +101,7 @@
 			<!-- 是否有显卡（1有 2没有） -->  
 			<if test=" hasGPU !=null and hasGPU !='' ">hasGPU=#{hasGPU},</if>  
 			<!-- 生产日期 -->  
-			<if test=" manufactureDate !=null and manufactureDate !='' ">manufactureDate=#{manufactureDate},</if>  
+			<if test=" manufactureDate !=null ">manufactureDate=#{manufactureDate},</if>  
 			<!-- 数量 -->  
 			<if test=" num !=null and num !='' ">num=#{num},</if>  
 			<!-- 是否二手（1二手 2新货） -->  

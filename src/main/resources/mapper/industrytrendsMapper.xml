@@ -16,7 +16,7 @@
 			<!-- 内容 -->  
 			<if test=" content !=null and content !='' ">and content=#{content}</if>  
 			<!-- 发布时间 -->  
-			<if test=" issueTime !=null and issueTime !='' ">and issueTime=#{issueTime}</if>  
+			<if test=" issueTime !=null ">and issueTime=#{issueTime}</if>  
 			<!-- 评论 -->  
 			<if test=" comment !=null and comment !='' ">and comment=#{comment}</if>  
 			<!-- 评论条数 -->  
@@ -39,7 +39,7 @@
 			<!-- 内容 -->  
 			<if test=" content !=null and content !='' ">content,</if>  
 			<!-- 发布时间 -->  
-			<if test=" issueTime !=null and issueTime !='' ">issueTime,</if>  
+			<if test=" issueTime !=null ">issueTime,</if>  
 			<!-- 评论 -->  
 			<if test=" comment !=null and comment !='' ">comment,</if>  
 			<!-- 评论条数 -->  
@@ -59,7 +59,7 @@
 			<!-- 内容 -->  
 			<if test=" content !=null and content !='' ">#{content},</if>  
 			<!-- 发布时间 -->  
-			<if test=" issueTime !=null and issueTime !='' ">#{issueTime},</if>  
+			<if test=" issueTime !=null ">#{issueTime},</if>  
 			<!-- 评论 -->  
 			<if test=" comment !=null and comment !='' ">#{comment},</if>  
 			<!-- 评论条数 -->  
@@ -83,7 +83,7 @@
 			<!-- 内容 -->  
 			<if test=" content !=null and content !='' ">content=#{content},</if>  
 			<!-- 发布时间 -->  
-			<if test=" issueTime !=null and issueTime !='' ">issueTime=#{issueTime},</if>  
+			<if test=" issueTime !=null ">issueTime=#{issueTime},</if>  
 			<!-- 评论 -->  
 			<if test=" comment !=null and comment !='' ">comment=#{comment},</if>  
 			<!-- 评论条数 -->  

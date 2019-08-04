@@ -19,6 +19,4 @@ public interface PartsService {
     public Parts getPartsById(int id);
 
 
-
-
 }

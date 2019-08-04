@@ -4,7 +4,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.util.Date;
 
 
 @ApiModel(value = "Coin" ,description = "币种")

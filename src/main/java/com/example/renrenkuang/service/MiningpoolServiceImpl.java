@@ -75,8 +75,7 @@ public class MiningpoolServiceImpl implements MiningpoolService {
     	return miningpoolDao.getMiningpoolById(id);
     	
     }
-
-
-
+    
+    
 
 }

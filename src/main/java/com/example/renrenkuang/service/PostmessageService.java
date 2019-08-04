@@ -19,6 +19,4 @@ public interface PostmessageService {
     public Postmessage getPostmessageById(int id);
 
 
-
-
 }

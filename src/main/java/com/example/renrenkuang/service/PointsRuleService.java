@@ -19,6 +19,4 @@ public interface PointsRuleService {
     public PointsRule getPointsRuleById(int id);
 
 
-
-
 }
